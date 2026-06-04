@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Stream TV — Free Live TV</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #E50914;
+      --black: #000000;
+      --dark: #111111;
+      --gray: #1a1a1a;
+      --text: #ffffff;
+      --muted: #888888;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--red); }
+
+    nav a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 36px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: #555; text-decoration: none; }
+
+    /* FEATURES */
+    .section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      margin-bottom: 40px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--dark);
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CHANNELS */
+    .channels-section {
+      background: var(--dark);
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: #222;
+      border: 1px solid #333;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 99px;
+    }
+
+    /* DOWNLOAD */
+    .download-section {
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .download-section h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .download-section p {
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-size: 16px;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dark);
+      border: 1px solid #333;
+      color: var(--text);
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    .store-badge:hover { border-color: #555; text-decoration: none; }
+    .store-badge .store-icon { font-size: 28px; }
+    .store-badge .store-text small { display: block; font-size: 11px; color: var(--muted); }
+    .store-badge .store-text strong { font-size: 16px; font-weight: 700; }
+
+    /* PRIVACY */
+    .privacy-section {
+      background: var(--dark);
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .privacy-content h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 28px 0 10px;
+      color: var(--text);
+    }
+
+    .privacy-content p,
+    .privacy-content li {
+      font-size: 14px;
+      color: #aaaaaa;
+      line-height: 1.8;
+    }
+
+    .privacy-content ul {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 30px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 12px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer nav a {
+      font-size: 13px;
+      color: var(--muted);
+      margin-left: 20px;
+      border: none;
+    }
+    footer nav a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      footer { flex-direction: column; text-align: center; }
+      footer nav a { margin: 0 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Global<span>Stream</span> TV</div>
+    <a href="#privacy">Privacy Policy</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">Free Live TV — FAST Model</div>
+    <h1>Watch Live TV,<br /><em>Free Forever</em></h1>
+    <p>Stream 20+ live channels — news, sports, entertainment, documentaries and more. No subscription. No sign-up required.</p>
+    <div class="cta-group">
+      <a href="#download" class="btn-primary">
+        &#9654; Watch Now — It's Free
+      </a>
+      <a href="#channels" class="btn-secondary">
+        See Channels
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="section-label">Why Global Stream TV</div>
+    <h2>Everything you need.<br />Nothing you don't.</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📺</div>
+        <h3>Live TV, Always Free</h3>
+        <p>No subscriptions, no paywalls. Watch official live streams from broadcasters around the world at no cost.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌎</div>
+        <h3>Brazilian & International Channels</h3>
+        <p>Channels from Brazil, Canada, USA and more — perfect for diaspora audiences and international viewers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Search & Favorites</h3>
+        <p>Instantly search any channel and save your favorites. Sign in with Google to sync across devices.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast & Lightweight</h3>
+        <p>Built with Flutter for a smooth native experience. Channels load quickly with HLS streaming technology.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Only Official Streams</h3>
+        <p>Every channel uses official, publicly available streams. No piracy — ever.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h3>Dark Mode, Always</h3>
+        <p>Designed for comfortable viewing in any lighting condition, with a clean full-screen player.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANNELS -->
+  <section class="channels-section" id="channels">
+    <div class="section">
+      <div class="section-label">Content</div>
+      <h2>20+ channels across every category</h2>
+      <div class="tag-list">
+        <span class="tag">TV Câmara</span>
+        <span class="tag">TV Brasil</span>
+        <span class="tag">TV Cultura</span>
+        <span class="tag">Jovem Pan News</span>
+        <span class="tag">Record News</span>
+        <span class="tag">Canal Gov</span>
+        <span class="tag">CazeTV</span>
+        <span class="tag">ge Fast</span>
+        <span class="tag">Documentary+</span>
+        <span class="tag">History Hit</span>
+        <span class="tag">Classic Arts Showcase</span>
+        <span class="tag">Knowledge Network</span>
+        <span class="tag">Yu-Gi-Oh!</span>
+        <span class="tag">DW Deutsch</span>
+        <span class="tag">CBC Comedy</span>
+        <span class="tag">CBC Heartland</span>
+        <span class="tag">Better Life Nature</span>
+        <span class="tag">Pursuit Channel</span>
+        <span class="tag">Canal Educação</span>
+        <span class="tag">+ more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download-section" id="download">
+    <h2>Start watching in seconds</h2>
+    <p>Available for Android. iOS coming soon.</p>
+    <a href="#" class="store-badge">
+      <span class="store-icon">▶</span>
+      <span class="store-text">
+        <small>GET IT ON</small>
+        <strong>Google Play</strong>
+      </span>
+    </a>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section class="privacy-section" id="privacy">
+    <div class="section privacy-content">
+      <div class="section-label">Legal</div>
+      <h2>Privacy Policy</h2>
+      <p><strong style="color:#fff">Last updated: June 2026</strong></p>
+
+      <h3>1. Overview</h3>
+      <p>Global Stream TV ("we", "our", "the app") is operated by an independent developer based in Canada. This policy explains what information we collect, how we use it, and your rights regarding that information.</p>
+
+      <h3>2. Information We Collect</h3>
+      <p>We collect limited information to operate the app:</p>
+      <ul>
+        <li><strong style="color:#fff">Account information:</strong> If you sign in with Google, we receive your name, email address, and profile photo from Google. This is used only to identify your account and sync your favorites.</li>
+        <li><strong style="color:#fff">Favorites:</strong> Channels you mark as favorites are stored in Firebase Firestore, linked to your account.</li>
+        <li><strong style="color:#fff">Usage data:</strong> We log ad impressions (channel name, ad type, timestamp) to track revenue. No personally identifiable information is included.</li>
+      </ul>
+
+      <h3>3. Advertising</h3>
+      <p>Global Stream TV is free and supported by ads. We use <strong style="color:#fff">Google Ad Manager</strong> and the <strong style="color:#fff">Google IMA SDK</strong> to serve video advertisements. Google may use cookies or device identifiers to serve ads based on your interests. To learn more or opt out, visit <a href="https://policies.google.com/technologies/ads" target="_blank">Google's ad settings</a>.</p>
+
+      <h3>4. Third-Party Services</h3>
+      <p>The app uses the following third-party services, each governed by their own privacy policies:</p>
+      <ul>
+        <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase (Google)</a> — database, authentication</li>
+        <li><a href="https://policies.google.com/privacy" target="_blank">Google Sign-In</a> — optional account login</li>
+        <li><a href="https://policies.google.com/privacy" target="_blank">Google Ad Manager / IMA SDK</a> — video advertising</li>
+      </ul>
+
+      <h3>5. Data Retention</h3>
+      <p>Account data is retained while your account is active. You may delete your account and associated data at any time by contacting us. Ad impression logs are retained for up to 12 months for revenue reporting.</p>
+
+      <h3>6. Children's Privacy</h3>
+      <p>Global Stream TV is not directed at children under 13. We do not knowingly collect personal information from children under 13.</p>
+
+      <h3>7. Your Rights</h3>
+      <p>Depending on your location, you may have the right to access, correct, or delete your personal data. To exercise these rights, contact us at the email below.</p>
+
+      <h3>8. Changes to This Policy</h3>
+      <p>We may update this policy from time to time. Changes will be posted on this page with an updated date.</p>
+
+      <h3>9. Contact</h3>
+      <p>Questions or requests regarding your data: <a href="mailto:danmaialmeida@gmail.com">danmaialmeida@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Global Stream TV. All rights reserved.</p>
+    <nav>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="mailto:danmaialmeida@gmail.com">Contact</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
