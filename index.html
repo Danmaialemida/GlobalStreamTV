@@ -286,6 +286,37 @@
     }
     footer nav a:hover { color: var(--text); }
 
+    /* ABOUT */
+    .about-content p {
+      font-size: 15px;
+      color: #aaaaaa;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--dark);
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 36px;
+      max-width: 520px;
+    }
+
+    .contact-box p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .contact-box a.btn-primary {
+      display: inline-flex;
+      font-size: 14px;
+      padding: 12px 24px;
+    }
+
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
       footer { flex-direction: column; text-align: center; }
@@ -298,14 +329,18 @@
   <!-- NAV -->
   <nav>
     <div class="logo">Global<span>Stream</span> TV</div>
-    <a href="#privacy">Privacy Policy</a>
+    <div style="display:flex;gap:24px;align-items:center;">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#privacy">Privacy Policy</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="badge">Free Live TV — FAST Model</div>
     <h1>Watch Live TV,<br /><em>Free Forever</em></h1>
-    <p>Stream 20+ live channels — news, sports, entertainment, documentaries and more. No subscription. No sign-up required.</p>
+    <p>Stream 180+ live channels from 10+ countries — news, sports, entertainment, documentaries and more. No subscription. No sign-up required.</p>
     <div class="cta-group">
       <a href="#download" class="btn-primary">
         &#9654; Watch Now — It's Free
@@ -358,7 +393,7 @@
   <section class="channels-section" id="channels">
     <div class="section">
       <div class="section-label">Content</div>
-      <h2>20+ channels across every category</h2>
+      <h2>180+ channels across every category</h2>
       <div class="tag-list">
         <span class="tag">TV Câmara</span>
         <span class="tag">TV Brasil</span>
@@ -443,12 +478,41 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-label">About Us</div>
+    <h2>Who we are</h2>
+    <div class="about-content">
+      <p>Global Stream TV is an independent streaming app developed by a Canadian-based developer with a passion for making live television accessible to everyone, everywhere — for free.</p>
+      <p>We aggregate publicly available, official live streams from broadcasters across 10+ countries, including Brazil, Canada, the United States, South Korea, France, Italy, India, Turkey, Mexico, and the United Kingdom. Our catalog covers news, sports, entertainment, documentaries, kids programming, music, and more.</p>
+      <p>Our mission is simple: give multicultural and diaspora audiences around the world a single, clean, fast app to watch the channels they love — without subscriptions, paywalls, or piracy. Every channel in our catalog uses official, publicly available streams. We take content integrity seriously.</p>
+      <p>The app is free and supported by ads through Google Ad Manager. We are committed to transparency, user privacy, and responsible content distribution.</p>
+      <p>Global Stream TV is currently available on Android, with iOS support planned for a future release.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="channels-section" id="contact">
+    <div class="section">
+      <div class="section-label">Contact Us</div>
+      <h2>Get in touch</h2>
+      <div class="contact-box">
+        <p>Have a question, a channel suggestion, or a content concern? We'd love to hear from you. We typically respond within 2 business days.</p>
+        <p><strong style="color:#fff">Email:</strong> <a href="mailto:danmaialmeida@gmail.com">danmaialmeida@gmail.com</a></p>
+        <p><strong style="color:#fff">Developer:</strong> Independent developer based in Canada</p>
+        <p><strong style="color:#fff">App:</strong> Global Stream TV — Free Live TV (Android)</p>
+        <a href="mailto:danmaialmeida@gmail.com" class="btn-primary">&#9993; Send us an email</a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 Global Stream TV. All rights reserved.</p>
     <nav>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
       <a href="#privacy">Privacy Policy</a>
-      <a href="mailto:danmaialmeida@gmail.com">Contact</a>
     </nav>
   </footer>
 
